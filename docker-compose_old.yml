@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Base de données MySQL
+  db:
+    image: mysql:8.0
+    container_name: wordpress_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_2024
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_pass_2024
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wordpress_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # WordPress avec configuration personnalisée
+  wordpress:
+    build: 
+      context: ./wordpress
+      dockerfile: Dockerfile
+    container_name: wordpress_app
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress_user
+      WORDPRESS_DB_PASSWORD: wordpress_pass_2024
+      WORDPRESS_DB_NAME: wordpress_db
+      # Configuration WordPress
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_DEBUG: 0
+    volumes:
+      # Persistance des données WordPress
+      - wordpress_data:/var/www/html
+      # Persistance des uploads
+      - ./uploads:/var/www/html/wp-content/uploads
+      # Persistance des thèmes personnalisés (optionnel)
+      - ./themes:/var/www/html/wp-content/themes/custom
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - wordpress_network
+
+volumes:
+  db_data:
+    driver: local
+  wordpress_data:
+    driver: local
+
+networks:
+  wordpress_network:
+    driver: bridge

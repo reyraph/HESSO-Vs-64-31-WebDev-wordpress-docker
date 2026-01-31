@@ -1,0 +1,17 @@
+.
+CHANGELOG.md
+GUIDE_ENSEIGNANT.md
+Makefile
+QUICKSTART.md
+README.md
+STRUCTURE.txt
+backup.sh
+backups
+docker-compose.yml
+restore.sh
+themes
+uploads
+wordpress
+wordpress/Dockerfile
+wordpress/docker-entrypoint.sh
+wordpress/init-wordpress.sh

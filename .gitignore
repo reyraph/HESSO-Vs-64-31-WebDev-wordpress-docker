@@ -1,0 +1,39 @@
+# Volumes Docker (données persistantes locales)
+# Ces données seront recréées à partir des exports
+*.sql
+*.sql.gz
+
+# Fichiers de configuration locaux
+.env
+.env.local
+
+# Uploads WordPress (trop volumineux pour Git)
+# Les étudiants pourront ajouter leurs propres images
+uploads/*
+!uploads/.gitkeep
+
+# Thèmes personnalisés peuvent être versionnés si nécessaire
+# Décommentez la ligne suivante si vous ne voulez pas versionner les thèmes
+# themes/*
+# !themes/.gitkeep
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Backups
+backups/*.tar.gz
+backups/*.zip
+
+# Fichiers temporaires
+tmp/
+temp/
