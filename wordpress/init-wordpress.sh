@@ -19,6 +19,10 @@ PLUGINS=(
     "contact-form-7"           # Formulaires de contact
     "all-in-one-wp-migration"  # Migration et sauvegarde
     "wpforms-lite"             # Création de formulaires
+	"advanced-custom-fields"   # Advenced Custom Fields
+	"wp-graphql"               # API with GraphQL
+	"wpgraphql-acf"            # GraphQL for ACF
+	"wpgraphql-ide"            # New interface for GraphQL
 )
 
 echo "Installation des plugins..."
