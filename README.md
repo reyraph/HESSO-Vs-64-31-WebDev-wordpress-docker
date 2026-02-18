@@ -74,7 +74,7 @@ wordpress-docker-etudiant/
 ### 1. Cloner le projet
 
 ```bash
-git clone <URL_DU_REPO>
+git clone https://github.com/reyraph/wordpress-docker-cours.git
 cd wordpress-docker-etudiant
 ```
 
